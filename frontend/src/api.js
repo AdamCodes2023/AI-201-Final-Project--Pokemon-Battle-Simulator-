@@ -1,6 +1,3 @@
-import axios from 'axios';
-const API = ""; 
-export const getList = () => axios.get(`${API}/pokemon/list`);
-export const start = (team) => axios.post(`${API}/battle/start`, {user_team: team});
-export const turn = (bid, type, val) => axios.post(`${API}/battle/turn`, {battle_id: bid, action_type: type, action_value: val});
-export const chat = (q) => axios.post(`${API}/chat`, {question: q});
+version https://git-lfs.github.com/spec/v1
+oid sha256:04da99fd2374e1d2e05d356ab3fcad71d1aa4d047b2b3b8613ba4c410d036d92
+size 391
