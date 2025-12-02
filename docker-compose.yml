@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  pokemon-app:
+    build: .
+    container_name: pokemon_monolith
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      # 1. Map the code (The Overwriter)
+      - ./backend:/app
+      
+      # 2. Map the DB (The Persistence)
+      - ./chroma_db:/app/chroma_db
+      - ./backend/pokemon_db.json:/app/pokemon_db.json
+      
+      # 3. THE BODYGUARD (The Fix)
+      # This tells Docker: "Use the internal container folder for this specific path"
+      - /app/static
+
+    command: bash ./start.sh
+
+# We don't need the volumes block at the bottom
